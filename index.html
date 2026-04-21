@@ -164,6 +164,16 @@
         <small>Intermediate</small>
       </div>
 
+      <div class="skill">
+        <span>Data Management</span>
+        <small>Basic</small>
+      </div>
+
+       <div class="skill">
+        <span>Cloud Platforms</span>
+        <small>Intermediate</small>
+      </div>
+
     </div>
 
   </div>
@@ -521,4 +531,61 @@ elements.forEach((el, index) => {
 
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("theme-toggle");
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+
+    // change icon
+    if (document.body.classList.contains("light-mode")) {
+      toggleBtn.innerHTML = "☀️";
+    } else {
+      toggleBtn.innerHTML = "🌙";
+    }
+  });
+});
+</script>
+<script>
+const toggle = document.getElementById("theme-toggle");
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  toggle.textContent =
+    document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const toggleBtn = document.getElementById("theme-toggle");
+
+  toggleBtn.addEventListener("click", function () {
+
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+      toggleBtn.textContent = "☀️";
+    } else {
+      toggleBtn.textContent = "🌙";
+    }
+
+  });
+
+});
+</script>
+<script>
+function toggleProject(id) {
+  const box = document.getElementById(id);
+  box.classList.toggle("show");
+}
+</script>
+<script>
+function toggleService(id) {
+  const box = document.getElementById(id);
+  box.classList.toggle("show");
+}
+</script>
 </html>
