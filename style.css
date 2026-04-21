@@ -1,3 +1,10 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background 0.4s ease, color 0.4s ease;
+}
 /* ================= RESET ================= */
 body {
   margin: 0;
@@ -1012,23 +1019,156 @@ button {
 
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* BOUNCY */
 }
-/* ================= PREMIUM SCROLL ANIMATION ================= */
+/* ================= PREMIUM REVEAL SYSTEM ================= */
 
 .reveal {
   opacity: 0;
-  transform: translateY(60px) scale(0.96);
-  filter: blur(6px);
+  transform: translateY(50px);
+  filter: blur(8px);
   transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity, filter;
 }
 
 .reveal.active {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
   filter: blur(0);
 }
 
-/* STAGGER EFFECT */
-.reveal.stagger {
-  transition-delay: var(--delay, 0s);
+/* stagger delay */
+.reveal[data-delay="1"] { transition-delay: 0.1s; }
+.reveal[data-delay="2"] { transition-delay: 0.2s; }
+.reveal[data-delay="3"] { transition-delay: 0.3s; }
+.reveal[data-delay="4"] { transition-delay: 0.4s; }
+.hero-text {
+  animation: heroLeft 1s ease-out;
+}
+
+.hero-img {
+  animation: heroRight 1s ease-out;
+}
+
+@keyframes heroLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes heroRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+/* ================= THEME TOGGLE BUTTON ================= */
+
+#theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #e5e7eb;
+  transition: 0.3s;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* LIGHT MODE BUTTON */
+body.light-mode #theme-toggle {
+  color: #0b1220;
+}
+.light-mode {
+  background: #ffffff;
+  color: #0b1220;
+}
+.light-mode {
+  background: white;
+  color: black;
+}
+.project-more {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.project-more.show {
+  max-height: 500px;
+  opacity: 1;
+}
+.more {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.more.show {
+  max-height: 300px;
+  opacity: 1;
+}
+/* ================= GLOBAL SMOOTH UI ================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: background 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+}
+
+/* ================= PREMIUM REVEAL ANIMATION ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(6px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* stagger effect */
+.reveal.delay-1 { transition-delay: 0.1s; }
+.reveal.delay-2 { transition-delay: 0.2s; }
+.reveal.delay-3 { transition-delay: 0.3s; }
+
+/* ================= HOVER LIFT (ALL CARDS) ================= */
+.about-card,
+.service-card,
+.project-card,
+.skills-box,
+.contact-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-card:hover,
+.service-card:hover,
+.project-card:hover,
+.skills-box:hover,
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
+}
+
+/* ================= BUTTON ANIMATION ================= */
+.btn, button {
+  transition: all 0.3s ease;
+}
+
+.btn:hover, button:hover {
+  transform: scale(1.05);
+}
+
+/* ================= FLOAT HERO IMAGE ================= */
+.profile {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
