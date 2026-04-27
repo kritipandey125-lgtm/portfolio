@@ -10,6 +10,10 @@
 </head>
 
 <body>
+  <body>
+
+<div class="cursor-glow"></div>
+<div class="cursor-trail"></div>
 
   <!-- ================= NAVBAR ================= -->
   <nav>
@@ -449,7 +453,7 @@
         <div class="contact-card">
           <p><strong>WhatsApp</strong></p>
           <p>9988776655</p>
-          <a href="https://wa.me/919988776655" target="_blank">Write me →</a>
+          <a href="https://wa.me/**********" target="_blank">Write me →</a>
         </div>
 
       </div>
@@ -458,19 +462,22 @@
 
         <h3>Write me your project</h3>
 
-        <form>
-          <input type="text" placeholder="Insert your name" required>
-          <input type="email" placeholder="Insert your email" required>
-          <textarea placeholder="Write your project" required></textarea>
+        <form action="https://formspree.io/f/xyzabcd" method="POST">
+  <input type="text" name="name" placeholder="Insert your name" required>
+  <input type="email" name="email" placeholder="Insert your email" required>
+  <textarea name="message" placeholder="Write your project" required></textarea>
 
-          <button type="submit">Send Message</button>
-        </form>
+  <button type="submit">Send Message</button>
+</form>
 
       </div>
 
     </div>
 
   </div>
+  <p id="success-msg" style="display:none; color:lightgreen;">
+  Message sent successfully!
+</p>
 </section>
 </section>
 
@@ -532,51 +539,6 @@ elements.forEach((el, index) => {
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("theme-toggle");
-
-  toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-
-    // change icon
-    if (document.body.classList.contains("light-mode")) {
-      toggleBtn.innerHTML = "☀️";
-    } else {
-      toggleBtn.innerHTML = "🌙";
-    }
-  });
-});
-</script>
-<script>
-const toggle = document.getElementById("theme-toggle");
-
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
-
-  toggle.textContent =
-    document.body.classList.contains("light-mode") ? "☀️" : "🌙";
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const toggleBtn = document.getElementById("theme-toggle");
-
-  toggleBtn.addEventListener("click", function () {
-
-    document.body.classList.toggle("light-mode");
-
-    if (document.body.classList.contains("light-mode")) {
-      toggleBtn.textContent = "☀️";
-    } else {
-      toggleBtn.textContent = "🌙";
-    }
-
-  });
-
-});
-</script>
-<script>
 function toggleProject(id) {
   const box = document.getElementById(id);
   box.classList.toggle("show");
@@ -588,4 +550,91 @@ function toggleService(id) {
   box.classList.toggle("show");
 }
 </script>
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+  reveals.forEach((el) => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+});
+</script>
+<script>
+const form = document.querySelector("form");
+const msg = document.getElementById("success-msg");
+
+form.addEventListener("submit", () => {
+  msg.style.display = "block";
+});
+</script>
+<script>
+const glow = document.querySelector(".cursor-glow");
+
+document.addEventListener("mousemove", (e) => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+</script>
+<script>
+const trailContainer = document.querySelector(".cursor-trail");
+
+const dots = [];
+const totalDots = 15; // 👈 increase for longer trail
+
+for (let i = 0; i < totalDots; i++) {
+  const dot = document.createElement("div");
+  dot.classList.add("trail-dot");
+  trailContainer.appendChild(dot);
+  dots.push({ el: dot, x: 0, y: 0 });
+}
+
+let mouse = { x: 0, y: 0 };
+
+document.addEventListener("mousemove", (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+function animateTrail() {
+  let x = mouse.x;
+  let y = mouse.y;
+
+  dots.forEach((dot, index) => {
+    dot.x += (x - dot.x) * 0.3;
+    dot.y += (y - dot.y) * 0.3;
+
+    dot.el.style.left = dot.x + "px";
+    dot.el.style.top = dot.y + "px";
+
+    // next dot follows previous
+    x = dot.x;
+    y = dot.y;
+  });
+
+  requestAnimationFrame(animateTrail);
+}
+
+animateTrail();
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("theme-toggle");
+
+  if (!toggleBtn) {
+    console.log("Theme button not found ❌");
+    return;
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+
+    toggleBtn.textContent =
+      document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+  });
+});
+</script>
+
 </html>
