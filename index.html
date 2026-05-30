@@ -642,22 +642,5 @@ function animateTrail() {
 
 animateTrail();
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("theme-toggle");
-
-  if (!toggleBtn) {
-    console.log("Theme button not found ❌");
-    return;
-  }
-
-  toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-
-    toggleBtn.textContent =
-      document.body.classList.contains("light-mode") ? "☀️" : "🌙";
-  });
-});
-</script>
 
 </html>
