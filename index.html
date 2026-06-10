@@ -350,8 +350,75 @@
         </ul>
       </div>
     </div>
+            <!-- PROJECT 3 -->
+    <div class="project-card">
+      <h3>Task Manager</h3>
+      <p class="project-subtitle">Full Stack Web Application</p>
 
-    <!-- PROJECT 3 -->
+      <button class="view-btn" onclick="toggleProject('task')">
+        View More →
+      </button>
+
+      <div class="project-more" id="task">
+        <p>
+         A full-stack Task Management application built using the MERN stack (MongoDB, Express.js, React, and Node.js).
+          The application enables users to create, manage, update, and track tasks through a clean and responsive interface.
+        </p>
+         <h4 style="color:#38bdf8; margin-top:10px;">Languages Used:</h4>
+
+        <ul style="color:#cbd5e1; padding-left:20px;">
+          <li>JavaScript</li>
+          <li>HTML</li>
+          <li>CSS</li>
+        </ul>
+      </div>
+    </div>            <!-- PROJECT 4 -->
+    <div class="project-card">
+      <h3>Tesla Landing Page</h3>
+      <p class="project-subtitle">Responsive Web Design</p>
+
+      <button class="view-btn" onclick="toggleProject('Tesla')">
+        View More →
+      </button>
+
+      <div class="project-more" id="Tesla">
+        <p>
+        Developed a responsive Tesla-inspired landing page with modern UI design, interactive animations, and optimized user experience using HTML, CSS, and JavaScript.
+        </p>
+         <h4 style="color:#38bdf8; margin-top:10px;">Languages Used:</h4>
+
+        <ul style="color:#cbd5e1; padding-left:20px;">
+          <li>JavaScript</li>
+          <li>HTML</li>
+          <li>CSS</li>
+        </ul>
+      </div>
+    </div>
+
+        <!-- PROJECT 5 -->
+    <div class="project-card">
+      <h3>Solar System Explorer</h3>
+      <p class="project-subtitle">Full Stack Web Application</p>
+
+      <button class="view-btn" onclick="toggleProject('solar')">
+        View More →
+      </button>
+
+      <div class="project-more" id="solar">
+        <p>
+          Developed an interactive web application to explore planets and other celestial bodies in the solar system.
+          Designed a responsive and user-friendly interface for seamless navigation across devices.
+        </p>
+         <h4 style="color:#38bdf8; margin-top:10px;">Languages Used:</h4>
+
+        <ul style="color:#cbd5e1; padding-left:20px;">
+          <li>JavaScript</li>
+          <li>HTML</li>
+          <li>CSS</li>
+        </ul>
+      </div>
+    </div>
+    <!-- PROJECT 6 -->
     <div class="project-card">
       <h3>Real Estate Website</h3>
       <p class="project-subtitle">Full Stack Property Platform</p>
@@ -383,29 +450,6 @@
     </div>
 
   </div>
-   <!-- PROJECT -4-->
-    <div class="project-card">
-      <h3>Mood Based Music Recommendation</h3>
-      <p class="project-subtitle">Full Stack Web Application</p>
-
-      <button class="view-btn" onclick="toggleProject('moodMusic')">
-        View More →
-      </button>
-
-      <div class="project-more" id="hospital">
-        <p>
-          Developed a web application that recommends music based on user mood using third-party APIs.
-        </p>
-         <h4 style="color:#38bdf8; margin-top:10px;">Languages Used:</h4>
-
-        <ul style="color:#cbd5e1; padding-left:20px;">
-           <li>TypeScript</li>
-          <li>JavaScript</li>
-          <li>Python</li>
-        </ul>
-        </ul>
-      </div>
-    </div>
 
 </section>
 </section>
@@ -642,5 +686,27 @@ function animateTrail() {
 
 animateTrail();
 </script>
+<script>
+const themeToggle = document.getElementById("theme-toggle");
 
+// Load saved theme
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light-mode");
+  themeToggle.textContent = "☀️";
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if (document.body.classList.contains("light-mode")) {
+    localStorage.setItem("theme", "light");
+    themeToggle.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme", "dark");
+    themeToggle.textContent = "🌙";
+  }
+});
+</script>
+
+</body>
 </html>
